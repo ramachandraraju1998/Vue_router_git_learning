@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Vue app</title>
+	<script src="assets/vue_dev.js"></script>
+	<script src="assets/vue_router.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+	<script type="text/javascript" src="assets/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<nav>
+			<router-link to="/" class="text-decoration-none">Home</router-link> |
+			<router-link to="/about" class="text-decoration-none">About</router-link> |
+			<router-link to="/contact" class="text-decoration-none">Contact us</router-link>
+		</nav>
+		<router-view/>
+	</div>
+	<script src="components/home.js"></script>
+	<script src="components/contact.js"></script>
+	<script src="components/about.js"></script>
+	<script src="components/modal1.js"></script>
+	<script src="components/modal2.js"></script>
+	<script src="components/modal3.js"></script>
+	<script>
+		var routes = [
+			{path:"/",component:Home},
+			{path:"/contact",component:Contact},
+			{path:"/about",component:About},
+			{path: '/modal',component: ModalComp1},
+			{path: '/modal2',component: ModalComp2},
+			{path: '/modal3',component: ModalComp3}
+			];
+
+		const router = VueRouter.createRouter({
+			history: VueRouter.createWebHashHistory(),
+			routes:routes
+		});
+
+		const app = Vue.createApp({});
+		app.use(router).mount("#app");
+	</script>
+</body>
+</html>
